@@ -1,0 +1,141 @@
+@import './mixin.scss';
+
+.chat {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    top: -30px;
+    margin-bottom: 143px;
+    &__search {
+        position: relative;
+        &-input {
+            @include setSize(1000px, 60px);
+            border-radius: 14px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            padding: 26px;
+        }
+
+        &-button {
+            @include setSize(66px, 60px);
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+            border: none;
+            background-color: #7E96FF;
+            border: 2px solid #7E96FF;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    }
+
+    &__main {
+        min-height: 400px;
+        &-ul {
+            @include flex(flex, center, flex-start);
+            flex-direction: column;
+            &-li {
+                width: 50%;
+                display: inline-block;
+                background-color: #D2D1D6;
+                padding: 20px;
+                box-sizing: border-box;
+                border-radius: 14px;
+                @include font(16px, 500, #7A7B7E);
+                margin-top: 30px;
+
+                &:nth-child(1) {
+                    margin-top: 56px;
+                }
+
+                &:nth-child(even) {
+                    align-self: flex-end;
+                    background-color: #7E96FF;
+                    @include font(16px, 500, #fff);
+                    .chat__main-ul-li-header-user {
+                        @include font(17px, 900, #fff);
+                    }
+                }
+                &-header {
+                    @include flex(flex, flex-start, center);
+                    &-img {
+
+                    }
+                    &-user {
+                        margin-left: 14px;
+                        @include font(17px, 900, #0C0C0C);
+                    }
+                }
+                &-content {
+                    text-align: left;
+                    margin-top: 16px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+
+    $offset: 187;
+    $duration: 1.4s;
+
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+
+        .spinner {
+            animation: rotator $duration linear infinite;
+    
+            .path {
+                stroke-dasharray: $offset;
+                stroke-dashoffset: 0;
+                transform-origin: center;
+                animation:
+                  dash $duration ease-in-out infinite, 
+                  colors ($duration*4) ease-in-out infinite;
+            }
+        }
+
+        &__info {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 16px;
+        }
+    }
+
+    @keyframes rotator {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(270deg); }
+    }
+      
+    @keyframes colors {
+          0% { stroke: #4285F4; }
+          25% { stroke: #DE3E35; }
+          50% { stroke: #F7C223; }
+          75% { stroke: #1B9A59; }
+          100% { stroke: #4285F4; }
+    }
+      
+    @keyframes dash {
+       0% { stroke-dashoffset: $offset; }
+       50% {
+         stroke-dashoffset: $offset/4;
+         transform:rotate(135deg);
+    }
+       100% {
+         stroke-dashoffset: $offset;
+         transform:rotate(450deg);
+       }
+    }
+}

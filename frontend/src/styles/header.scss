@@ -1,0 +1,71 @@
+@import './mixin.scss';
+
+.header {
+    @include setSize(1120px, 80px);
+    margin: auto;
+    @include flex(flex, space-between, center);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    &__logo {
+        @include font(28px, 900, #fff);
+        cursor: pointer;
+    }
+
+    &__ul {
+        @include flex(flex, flex-start, center);
+        &-li {
+            margin-left: 20px;
+            @include font(14px, 500, #fff);
+            cursor: pointer;
+
+            &:first-child {
+                margin-left: 0;
+            }
+            &-profile {
+
+            }
+        }
+    }
+}
+
+.main-banner {
+    @include setSize(100%, 502px);
+    background-image: url("../assets/img/main-banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &__black {
+        @include setSize(100%, 100%);
+        background-color: #000;
+        opacity: 0.2;
+    }
+
+    &__info {
+        @include setSize(1000px, 100%);
+        text-align: left;
+        @include flex(flex, center, flex-start);
+        flex-direction: column;
+        white-space: pre-line;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-left: 20px;
+
+        &-title {
+            @include font(46px, 900, #fff);
+            line-height: 64px;
+        }
+
+        &-description {
+            @include font(22px, 500, #fff);
+            line-height: 32px;
+            margin-top: 8px;
+        }
+    }
+}

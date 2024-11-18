@@ -1,0 +1,30 @@
+@import './mixin.scss';
+
+.footer {
+    @include setSize(100%, 247px);
+    background-color: #6A6E76;
+    @include flex(flex, center, center);
+
+    &__info {
+        text-align: left;
+        margin-left: 43px;        
+
+        &-contact {
+            @include font(16px, 400, #ccc);
+            margin-top: 8px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        &-copyright {
+            @include font(14px, 400, #ccc);
+            margin-top: 8px;
+
+            &:nth-child(4) {
+                margin-top: 17px;
+            }
+        }
+    }
+}
